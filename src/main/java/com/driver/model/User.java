@@ -12,17 +12,17 @@ public class User {
     private int id;
     private String name;
 
-    private String phoneNo;
+    private String phoneNumber;
 
     private String password;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     List<Reservation> reservationList = new ArrayList<>();
 
-    public User(int id, String name, String phoneNo, String password, List<Reservation> reservationList) {
+    public User(int id, String name, String phoneNumber, String password, List<Reservation> reservationList) {
         this.id = id;
         this.name = name;
-        this.phoneNo = phoneNo;
+        this.phoneNumber = phoneNumber;
         this.password = password;
         this.reservationList = reservationList;
     }
@@ -46,12 +46,12 @@ public class User {
         this.name = name;
     }
 
-    public String getPhoneNo() {
-        return phoneNo;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPassword() {
