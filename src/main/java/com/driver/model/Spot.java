@@ -7,8 +7,9 @@ import java.util.List;
 @Entity
 @Table(name="spot")
 public class Spot {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Enumerated(EnumType.STRING)
@@ -22,16 +23,13 @@ public class Spot {
     @JoinColumn
     private ParkingLot parkingLot;
 
-    @OneToMany(mappedBy = "spot", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "spot",cascade = CascadeType.ALL)
     private List<Reservation> reservationList = new ArrayList<>();
 
-    public Spot(int id, SpotType spotType, int pricePerHour, boolean occupied, ParkingLot parkingLot, List<Reservation> reservationList) {
-        this.id = id;
+    public Spot(SpotType spotType, int pricePerHour, boolean occupied) {
         this.spotType = spotType;
         this.pricePerHour = pricePerHour;
         this.occupied = occupied;
-        this.parkingLot = parkingLot;
-        this.reservationList = reservationList;
     }
 
     public Spot() {
@@ -61,7 +59,7 @@ public class Spot {
         this.pricePerHour = pricePerHour;
     }
 
-    public boolean isOccupied() {
+    public boolean getOccupied() {
         return occupied;
     }
 
@@ -83,9 +81,5 @@ public class Spot {
 
     public void setReservationList(List<Reservation> reservationList) {
         this.reservationList = reservationList;
-    }
-
-    public boolean getOccupied() {
-        return false;
     }
 }
